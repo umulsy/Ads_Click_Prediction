@@ -75,6 +75,10 @@ F1-Score: Menggabungkan precision dan recall dalam satu metrik.
 ### Hasil Proyek
 Model Random forest mencapai akurasi sebesar 96% dan F1-Score sebesar 0,96, menunjukkan bahwa model ini cukup efektif dalam memprediksi klik iklan.
 
-## Source
+## 7. Source
 1. Understanding Ads Click-Through Rate Prediction with Machine Learning from Medium [LINK](https://medium.com/@varun.tyagi83/understanding-ads-click-through-rate-prediction-with-machine-learning-9ee1e637203c)
 2. Research Gate : Difference of KNN, Random Forest, XGB [LINK](https://www.researchgate.net/post/What_is_the_difference_between_the_three_Machine_Learning_models)
+
+## 8. Struktur Laporan
+Laporan ini mengikuti format yang disarankan, dengan penjelasan yang diuraikan sesuai template, menyertakan kode snippet jika diperlukan untuk memudahkan pemahaman pembaca.
+
