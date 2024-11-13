@@ -16,7 +16,8 @@ Studi menunjukkan bahwa penggunaan model machine learning seperti Random Forest 
 ### Masalah
 Problem Statement: Apakah dapat diprediksi apakah pengguna akan mengklik iklan berdasarkan atribut mereka seperti usia, jenis kelamin, riwayat penelusuran, jenis perangkat, dan waktu akses?
 
-### Tujuan: Mengembangkan model prediksi yang akurat untuk meminimalkan iklan yang tidak tepat sasaran.
+### Tujuan:
+Mengembangkan model prediksi yang akurat untuk meminimalkan iklan yang tidak tepat sasaran.
 
 ### Solution Statement
 Algoritma KNN: Menggunakan KNN untuk memprediksi kecenderungan klik berdasarkan kesamaan profil pengguna.
@@ -76,4 +77,4 @@ Model Random forest mencapai akurasi sebesar 96% dan F1-Score sebesar 0,96, menu
 
 ## Source
 1. Understanding Ads Click-Through Rate Prediction with Machine Learning from Medium [LINK](https://medium.com/@varun.tyagi83/understanding-ads-click-through-rate-prediction-with-machine-learning-9ee1e637203c)
-2. Research Gate : Difference of KNN, Random Forest, XGB [LINK](https://www.researchgate.net/post/What_is_the_difference_between_the_three_Machine_Learning_models
+2. Research Gate : Difference of KNN, Random Forest, XGB [LINK](https://www.researchgate.net/post/What_is_the_difference_between_the_three_Machine_Learning_models)
