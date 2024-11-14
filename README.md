@@ -127,22 +127,58 @@ Dengan pendekatan ini, solusi diharapkan dapat memenuhi tujuan proyek untuk meng
 
 ## 3. Data Understanding
 ### Tentang dataset
-Tentang
-diunduh dari : [LINK DATASET](https://www.kaggle.com/datasets/marius2303/ad-click-prediction-dataset)
+dataset diunduh dari : [LINK DATASET](https://www.kaggle.com/datasets/marius2303/ad-click-prediction-dataset)
 Kumpulan data ini memberikan wawasan tentang perilaku pengguna dan iklan daring, khususnya berfokus pada prediksi apakah pengguna akan mengeklik iklan daring. Kumpulan data ini berisi informasi demografi pengguna, kebiasaan menjelajah, dan detail terkait tampilan iklan.
 Kumpulan data ini ideal untuk membangun model klasifikasi biner guna memprediksi interaksi pengguna dengan iklan daring.
 
+#### a. Informasi Dataset
+- Jumlah total baris (data): 8,337
+- Jumlah total kolom (fitur): 9
+- Kolom target: click (menunjukkan apakah iklan di-klik atau tidak, dengan nilai integer 1 atau 0)
+
+Deskripsi Setiap Kolom
+id (int64):
+
+ID unik untuk setiap entri atau pengguna. Kolom ini mungkin tidak relevan untuk analisis karena hanya digunakan sebagai pengidentifikasi.
+full_name (object):
+
+Nama lengkap pengguna. Kolom ini mungkin hanya berfungsi sebagai informasi tambahan dan dapat dihapus untuk analisis prediksi, karena nama pengguna biasanya tidak memiliki korelasi dengan kemungkinan klik iklan.
+age (float64):
+
+Usia pengguna. Hanya ada 4,458 non-null dari total 8,337 data, menunjukkan bahwa sekitar 47% data tidak memiliki informasi usia.
+gender (object):
+
+Jenis kelamin pengguna, dengan hanya 3,644 non-null data, sehingga sekitar 56% data tidak memiliki informasi gender.
+device_type (object):
+
+Jenis perangkat yang digunakan pengguna untuk browsing (misalnya, mobile, desktop). Terdapat 6,674 non-null data, dengan sekitar 20% data yang kosong di kolom ini.
+ad_position (object):
+
+Posisi iklan pada halaman (misalnya, header, sidebar, footer). Terdapat 6,683 non-null data, sehingga sekitar 20% data lainnya kosong.
+browsing_history (object):
+
+Riwayat browsing pengguna, yang dapat menunjukkan minat atau kebiasaan pengguna dalam mengunjungi situs tertentu. Hanya ada 4,329 non-null data, dengan sekitar 48% data yang kosong, sehingga mungkin perlu dipertimbangkan untuk imputasi atau penanganan lain.
+time_of_day (object):
+
+Waktu dalam hari saat iklan ditampilkan (misalnya pagi, siang, malam). Hanya ada 6,672 non-null data, dengan sekitar 20% data yang kosong.
+click (int64):
+
+Kolom target yang menunjukkan apakah iklan di-klik atau tidak (dengan nilai 1 untuk klik dan 0 untuk tidak klik). Kolom ini lengkap dengan 8,337 non-null data.
+
+Analisis Missing Values
+Dataset ini memiliki sejumlah nilai kosong di beberapa kolom, terutama di age, gender, dan browsing_history, yang dapat berdampak pada hasil prediksi. Perlu dilakukan strategi untuk menangani missing values, misalnya dengan mengimputasi nilai median untuk kolom numerik (age) atau kategori terbanyak untuk kolom kategorikal (device_type, ad_position, dll.).
+
 ### Fitur
 
-id: Pengidentifikasi unik untuk setiap pengguna.
-full_name: Nama pengguna diformat sebagai "UserX" untuk anonimitas.
-age: Usia pengguna (berkisar antara 18 hingga 64 tahun).
-gender: Jenis kelamin pengguna (dikategorikan sebagai Pria, Wanita, atau Non-Biner).
-device_type: Jenis perangkat yang digunakan pengguna saat melihat iklan (Seluler, Desktop, Tablet).
-ad_position: Posisi iklan di halaman web (Atas, Samping, Bawah).
-browsing_history: Aktivitas penjelajahan pengguna sebelum melihat iklan (Belanja, Berita, Hiburan, Pendidikan, Media Sosial).
-time_of_day: Waktu saat pengguna melihat iklan (Pagi, Siang, Sore, Malam).
-click: Label target yang menunjukkan apakah pengguna mengklik iklan (1 untuk klik, 0 untuk tidak mengklik).
+- id: Pengidentifikasi unik untuk setiap pengguna.
+- full_name: Nama pengguna diformat sebagai "UserX" untuk anonimitas.
+- age: Usia pengguna (berkisar antara 18 hingga 64 tahun).
+- gender: Jenis kelamin pengguna (dikategorikan sebagai Pria, Wanita, atau Non-Biner).
+- device_type: Jenis perangkat yang digunakan pengguna saat melihat iklan (Seluler, Desktop, Tablet).
+- ad_position: Posisi iklan di halaman web (Atas, Samping, Bawah).
+- browsing_history: Aktivitas penjelajahan pengguna sebelum melihat iklan (Belanja, Berita, Hiburan, Pendidikan, Media Sosial).
+- time_of_day: Waktu saat pengguna melihat iklan (Pagi, Siang, Sore, Malam).
+- click: Label target yang menunjukkan apakah pengguna mengklik iklan (1 untuk klik, 0 untuk tidak mengklik).
 
 ## 4. Data Preparation
 ### Teknik Data Preparation
