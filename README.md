@@ -9,20 +9,121 @@ Prediksi klik iklan memungkinkan perusahaan untuk:
 - Meningkatkan ROI iklan melalui penargetan yang lebih tepat.
 - Mengurangi pemborosan anggaran dengan mengurangi jumlah iklan yang ditayangkan pada audiens yang kurang berpotensi.
 
-### Riset Terkait
-Studi menunjukkan bahwa penggunaan model machine learning seperti Random Forest dan XGBoost telah meningkatkan akurasi prediksi dalam analisis perilaku klik iklan karena kedua model ini mampu menangani data kompleks dengan baik (Sumber1, Sumber2).
-
 ## 2. Business Understanding
-### Masalah
-Problem Statement: Apakah dapat diprediksi apakah pengguna akan mengklik iklan berdasarkan atribut mereka seperti usia, jenis kelamin, riwayat penelusuran, jenis perangkat, dan waktu akses?
+Proyek ini dibuat berdasarkan karakteristik perusahaan iklan
+### 1. Perusahaan Periklanan Digital yang Berorientasi pada Analisis Data
+Perusahaan ini sangat menekankan penggunaan analisis data untuk meningkatkan efektivitas kampanye iklan mereka. Dengan mengakui pentingnya analisis prediktif dan machine learning, mereka memiliki komitmen untuk mengoptimalkan setiap keputusan pemasaran digital. Prediksi klik iklan yang akurat memungkinkan perusahaan untuk menargetkan pelanggan potensial secara lebih efektif, meningkatkan konversi, serta mengelola anggaran iklan secara lebih efisien.
 
-### Tujuan:
-Mengembangkan model prediksi yang akurat untuk meminimalkan iklan yang tidak tepat sasaran.
+### 2. Perusahaan dengan Basis Data Pelanggan yang Kaya
+Perusahaan ini memiliki akses ke basis data pelanggan yang luas dan kaya, mencakup variabel seperti usia, jenis perangkat, riwayat penelusuran, serta preferensi waktu pengguna saat mengakses platform. Data ini adalah aset berharga yang dapat digunakan untuk mengembangkan model prediktif guna mengidentifikasi pelanggan yang kemungkinan besar akan mengklik iklan tertentu.
+
+### 3. Perusahaan yang Berfokus pada Keunggulan Kompetitif
+Dengan kompetisi yang ketat di pasar periklanan digital, perusahaan ini berfokus untuk membangun keunggulan kompetitif dengan memanfaatkan teknik prediktif yang canggih. Analisis prediktif dan machine learning membantu perusahaan mengoptimalkan kampanye iklan mereka, menawarkan iklan yang lebih relevan kepada calon pelanggan, serta memaksimalkan efisiensi anggaran pemasaran.
+
+Dengan memahami karakteristik bisnis perusahaan periklanan digital ini, proyek prediksi klik iklan dapat dirancang untuk memenuhi kebutuhan dan tujuan bisnis yang spesifik, serta memberikan manfaat berikut:
+
+#### a. Penargetan Iklan yang Lebih Akurat
+Dengan menggunakan model prediktif, perusahaan dapat menargetkan pelanggan yang lebih mungkin untuk mengklik iklan, berdasarkan faktor-faktor yang relevan seperti waktu akses, jenis perangkat, dan riwayat penelusuran. Model ini memungkinkan perusahaan untuk menentukan kampanye yang lebih tepat sasaran, meningkatkan ROI iklan, dan menghindari pemborosan pada iklan yang kurang efektif.
+
+#### b. Peningkatan Efisiensi dan Produktivitas
+Penggunaan teknologi analisis prediktif memungkinkan perusahaan untuk memproses data pengguna secara otomatis, memprediksi klik iklan dengan lebih cepat, dan mengurangi waktu serta upaya yang dibutuhkan dalam analisis manual. Dengan model prediktif, proses penentuan target kampanye dapat diotomatisasi sehingga tim pemasaran dapat fokus pada strategi lain untuk meningkatkan jangkauan dan kualitas iklan.
+
+#### c. Pengambilan Keputusan yang Lebih Informasional
+Model prediktif memberikan wawasan lebih mendalam tentang faktor-faktor yang memengaruhi klik iklan, membantu perusahaan memahami pola perilaku pengguna dan mengidentifikasi tren yang signifikan. Informasi ini memungkinkan perusahaan untuk mengembangkan kampanye yang lebih informatif, serta memberikan penawaran yang lebih relevan bagi pengguna yang berbeda karakteristiknya.
+
+#### d. Keunggulan Kompetitif di Pasar Periklanan Digital
+Dengan memanfaatkan model prediktif yang canggih, perusahaan dapat membangun keunggulan kompetitif melalui kampanye yang lebih terukur dan relevan bagi calon pelanggan. Dengan meningkatkan akurasi penargetan dan menyediakan iklan yang lebih menarik, perusahaan ini dapat menarik lebih banyak calon pelanggan dan mempertahankan pelanggan saat ini, memperluas pangsa pasar serta membedakan diri dari pesaing.
+
+Dengan demikian, proyek prediksi klik iklan ini dapat membantu perusahaan membuat keputusan bisnis yang lebih baik, meningkatkan efisiensi operasional, dan mencapai keunggulan kompetitif di pasar periklanan digital.
+
+### Problem Statement
+#### a. Bagaimana langkah yang dapat diambil untuk meningkatkan akurasi dalam memprediksi klik iklan?
+Perusahaan periklanan menghadapi tantangan dalam memastikan iklan yang mereka tampilkan efektif dan menjangkau audiens yang tepat. Hal ini disebabkan oleh keterbatasan dalam memahami faktor-faktor yang memengaruhi kemungkinan seseorang untuk mengklik iklan.
+
+Dalam proyek ini, kami akan mengatasi masalah ini dengan mengembangkan model analisis prediktif yang dapat memperkirakan peluang klik iklan dengan akurasi lebih tinggi, sehingga memungkinkan perusahaan untuk meningkatkan efektivitas iklan dan memaksimalkan ROI dari kampanye iklan mereka.
+
+#### b. Bagaimana caranya untuk meningkatkan relevansi dan personalisasi iklan bagi calon pelanggan?
+Banyak pengguna merasa bahwa iklan yang mereka lihat kurang relevan atau tidak sesuai dengan minat mereka, yang mengurangi kemungkinan klik dan interaksi.
+
+Dalam proyek ini, kami akan meningkatkan relevansi dan personalisasi iklan dengan mengidentifikasi faktor-faktor yang paling berpengaruh dalam menentukan minat pengguna terhadap suatu iklan. Hal ini akan membantu perusahaan untuk menyajikan iklan yang lebih sesuai dengan preferensi individu, meningkatkan engagement, dan menciptakan pengalaman pengguna yang lebih positif.
+
+#### c. Bagaimana risiko pemborosan anggaran iklan dapat dikurangi?
+Anggaran iklan yang tidak dikelola dengan baik dapat menyebabkan pemborosan. Jika iklan ditampilkan kepada audiens yang tidak tertarik, ini dapat meningkatkan biaya tanpa menghasilkan klik atau konversi yang diinginkan.
+
+Dalam proyek ini, kami akan membantu mengurangi risiko pemborosan anggaran dengan menggunakan model prediktif yang lebih akurat, sehingga perusahaan dapat menargetkan iklan kepada audiens yang paling berpotensi untuk berinteraksi, menghasilkan konversi, dan memaksimalkan efektivitas anggaran pemasaran.
+
+Dalam konteks prediksi klik iklan, berikut adalah contoh konkret dari faktor-faktor spesifik yang sering menyebabkan masalah-masalah yang disebutkan sebelumnya:
+
+1. Kurangnya akurasi dalam memprediksi klik iklan:
+
+Masalah: Sulitnya memahami faktor-faktor yang berkontribusi terhadap minat pengguna dalam mengklik iklan, seperti jenis perangkat, waktu akses, dan riwayat penelusuran.
+Contoh: Seorang pengguna yang sering mengakses media sosial pada malam hari mungkin memiliki pola perilaku yang berbeda dari pengguna di pagi hari, sehingga model prediktif harus mampu menangkap perbedaan ini untuk meningkatkan akurasi prediksi klik.
+
+2. Kurangnya relevansi iklan bagi calon pelanggan:
+
+Masalah: Banyak calon pelanggan merasa bahwa iklan yang ditampilkan tidak sesuai dengan minat atau kebutuhan mereka.
+Contoh: Pengguna yang lebih sering mencari produk teknologi akan merasa iklan gadget atau aksesoris teknologi lebih relevan daripada iklan produk yang tidak mereka minati. Faktor seperti riwayat penelusuran dan kategori produk favorit dapat dimanfaatkan untuk meningkatkan relevansi iklan.
+
+3. Risiko pemborosan anggaran iklan:
+
+Masalah: Menargetkan iklan kepada audiens yang kurang tertarik meningkatkan biaya periklanan tanpa adanya konversi yang berarti.
+Contoh: Jika perusahaan terus menampilkan iklan kepada pengguna yang jarang atau tidak pernah mengklik, biaya iklan akan meningkat tanpa hasil yang diharapkan, menyebabkan kerugian finansial.
+Dalam proyek "Click Prediction for Ads", faktor-faktor ini akan dianalisis secara komprehensif dan dimasukkan ke dalam model prediktif.
+
+Dengan memanfaatkan teknik machine learning, model ini akan menghasilkan perkiraan klik iklan yang lebih akurat berdasarkan faktor-faktor relevan yang mempengaruhi perilaku pengguna. Selain itu, dengan mengidentifikasi variabel yang paling signifikan dalam prediksi klik, perusahaan dapat menyusun strategi periklanan yang lebih efektif, relevan, dan transparan, menciptakan pengalaman pengguna yang lebih personal serta mengurangi pemborosan anggaran.
+
+### Tujuan Proyek
+Tujuan proyek prediksi klik iklan ini adalah sebagai berikut:
+
+Mengembangkan model analisis prediktif untuk prediksi klik iklan:
+Tujuan utama proyek ini adalah mengembangkan model analisis prediktif yang dapat memperkirakan kemungkinan klik iklan dengan tingkat akurasi tinggi. Dengan melakukan analisis data yang komprehensif dan memanfaatkan teknik machine learning, model ini bertujuan untuk memberikan prediksi klik yang lebih tepat, memungkinkan perusahaan untuk meningkatkan efektivitas dan ROI dari kampanye iklan mereka.
+
+Meningkatkan relevansi dan personalisasi iklan:
+Proyek ini bertujuan untuk meningkatkan relevansi dan personalisasi iklan bagi audiens. Dengan mengidentifikasi faktor-faktor yang paling signifikan dalam mempengaruhi minat pengguna terhadap iklan, model ini dapat membantu perusahaan menyajikan iklan yang lebih sesuai dengan preferensi individu, meningkatkan engagement pengguna, dan menciptakan pengalaman yang lebih positif.
+
+Mengoptimalkan penggunaan anggaran iklan:
+Salah satu tujuan proyek ini adalah membantu perusahaan mengelola anggaran iklan secara lebih efektif dengan mengurangi pemborosan pada target yang tidak potensial. Dengan prediksi klik yang lebih akurat, perusahaan dapat menargetkan iklan kepada audiens yang lebih tepat, memaksimalkan konversi, dan menjaga efisiensi anggaran iklan.
+
+Metrik evaluasi yang akan digunakan untuk mengukur keberhasilan proyek ini dalam mencapai setiap tujuan meliputi:
+
+Akurasi prediksi klik:
+Metrik ini digunakan untuk mengukur sejauh mana model dapat memprediksi klik iklan dengan tepat. Akurasi prediksi yang tinggi menunjukkan bahwa model memberikan perkiraan yang andal, sehingga mendukung tujuan pertama.
+
+Tingkat relevansi iklan:
+Metrik ini dapat diukur melalui tingkat keterlibatan pengguna (seperti click-through rate) untuk melihat sejauh mana pengguna merasa iklan yang ditampilkan relevan dengan minat mereka. Semakin tinggi tingkat keterlibatan, semakin tinggi relevansi dan personalisasi yang berhasil dicapai.
+
+Efisiensi anggaran iklan:
+Metrik ini dapat diukur dengan membandingkan pengeluaran iklan dan hasil konversi sebelum dan sesudah penerapan model prediktif. Jika model membantu mengurangi pemborosan anggaran, maka tujuan ketiga tercapai.
 
 ### Solution Statement
-Algoritma KNN: Menggunakan KNN untuk memprediksi kecenderungan klik berdasarkan kesamaan profil pengguna.
-Algoritma Random Forest: Model ini digunakan karena kemampuannya dalam menangani data dengan variabel kategori dan menangani overfitting dengan baik.
-XGBoost: Model ini diharapkan meningkatkan akurasi lebih lanjut karena algoritma boosting yang optimal untuk mengurangi kesalahan prediksi.
+
+Solusi yang diberikan untuk proyek prediksi klik iklan ini melibatkan beberapa tahapan dan algoritma yang digunakan. Berikut adalah penjelasan yang lebih rinci mengenai solusi yang direncanakan:
+
+1. Eksplorasi Data (Exploratory Data Analysis - EDA)
+Sebelum melatih model, proses EDA akan dilakukan untuk memahami karakteristik data iklan dan pengguna. EDA ini bertujuan untuk mengidentifikasi pola, menemukan korelasi antar variabel (seperti usia pengguna, waktu tayang iklan, atau jenis iklan), serta memperoleh wawasan yang berguna dalam memprediksi kemungkinan klik iklan.
+
+2. Algoritma KNN (K-Nearest Neighbors), Random Forest, dan XGBoost
+Tiga algoritma utama dipilih untuk proyek ini:
+
+K-Nearest Neighbors (KNN): Algoritma ini akan digunakan untuk memprediksi kemungkinan klik iklan berdasarkan kemiripan karakteristik pengguna yang ada di data. KNN dapat membantu dalam menangkap pola dengan pendekatan jarak antar data yang mirip.
+
+Random Forest: Algoritma ensemble ini memanfaatkan beberapa pohon keputusan untuk menghasilkan prediksi yang lebih stabil dan akurat. Random Forest sangat berguna dalam menangani data yang kompleks serta membantu mengidentifikasi variabel paling berpengaruh dalam prediksi klik iklan.
+
+XGBoost (Extreme Gradient Boosting): XGBoost adalah algoritma boosting yang dapat menghasilkan model prediksi yang kuat dan efisien. Algoritma ini akan digunakan untuk memaksimalkan akurasi prediksi dengan memanfaatkan teknik boosting untuk memperbaiki kesalahan pada prediksi sebelumnya.
+
+3. Evaluasi dengan Metrik Akurasi, Precision, Recall, dan MSE (Mean Squared Error)
+Beberapa metrik evaluasi utama yang akan digunakan adalah:
+
+Akurasi: Digunakan untuk mengukur persentase prediksi yang benar oleh model, memastikan bahwa model dapat mengidentifikasi klik iklan dengan tepat.
+
+Precision dan Recall: Untuk mengukur sejauh mana model mampu memprediksi klik iklan secara benar tanpa terlalu banyak kesalahan atau melewatkan kemungkinan klik yang sebenarnya.
+
+Mean Squared Error (MSE): MSE akan digunakan untuk menghitung kesalahan rata-rata kuadrat antara nilai prediksi dan nilai sebenarnya, khususnya untuk memastikan bahwa model tidak terlalu jauh meleset dalam prediksinya.
+
+4. Eksperimen dan Optimasi Model
+Setiap model akan diuji menggunakan metrik evaluasi tersebut, dan optimasi hyperparameter akan dilakukan secara manual atau dengan teknik seperti Grid Search atau Random Search. Melalui pendekatan eksperimen ini, performa setiap algoritma akan dibandingkan untuk menentukan model terbaik dalam memprediksi klik iklan.
+
+Dengan pendekatan ini, solusi diharapkan dapat memenuhi tujuan proyek untuk mengembangkan model prediksi klik iklan yang akurat, membantu perusahaan mengoptimalkan strategi iklan, dan meningkatkan efektivitas kampanye marketing mereka.
 
 ## 3. Data Understanding
 ### Tentang dataset
