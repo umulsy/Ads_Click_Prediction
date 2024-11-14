@@ -2,7 +2,7 @@
 # Laporan Proyek Machine Learning: Ads Click Prediction
 ## 1. Domain Proyek
 ### Latar Belakang
-Dalam dunia periklanan digital, memahami perilaku pengguna saat mereka mengklik atau mengabaikan iklan adalah informasi penting bagi pengiklan untuk meningkatkan efektivitas kampanye. Prediksi klik iklan sangat penting untuk mengoptimalkan alokasi anggaran pemasaran dan meningkatkan konversi.
+Dalam dunia periklanan digital, memahami perilaku pengguna saat mereka mengklik atau mengabaikan iklan adalah informasi penting bagi pengiklan untuk meningkatkan efektivitas kampanye. Prediksi klik iklan sangat penting untuk mengoptimalkan alokasi anggaran pemasaran dan meningkatkan konversi[1].
 
 ### Tujuan
 Prediksi klik iklan memungkinkan perusahaan untuk:
@@ -181,41 +181,95 @@ Dataset ini memiliki sejumlah nilai kosong di beberapa kolom, terutama di age, g
 - click: Label target yang menunjukkan apakah pengguna mengklik iklan (1 untuk klik, 0 untuk tidak mengklik).
 
 ## 4. Data Preparation
-### Teknik Data Preparation
-Penanganan Missing Values: Mengisi nilai kosong dengan mean (untuk variabel numerik) atau mode (untuk variabel kategori).
-Encoding Variabel Kategori: Menggunakan teknik one-hot encoding untuk variabel seperti device type dan gender.
-Menghapus kolom id
-Membuat kolom user type dengan label recurrent user dan first time user
-Normalisasi Data: Normalisasi kolom numerik untuk meningkatkan kinerja KNN.
-Pembagian Data: Membagi dataset menjadi 80% data latih dan 20% data uji.
-### Alasan Data Preparation
-Encoding dilakukan untuk memastikan bahwa semua data dalam format numerik.
-Normalisasi bertujuan untuk mengurangi efek skala pada model KNN yang sensitif terhadap jarak antar data.
-Untuk mengkategorikan tipe user
+
+Dalam proses persiapan data untuk proyek prediksi klik iklan, berikut adalah teknik yang digunakan:
+
+#### One Hot Encoding pada Fitur Kategorikal
+Pada dataset prediksi iklan, terdapat beberapa fitur kategorikal, seperti gender, device_type, ad_position, dan time_of_day, yang tidak dapat langsung digunakan dalam algoritma machine learning karena sebagian besar algoritma hanya bekerja dengan data numerik. Oleh karena itu, teknik One Hot Encoding digunakan untuk mengonversi variabel kategorikal ini ke dalam representasi numerik.
+
+Library Pandas menyediakan fungsi pd.get_dummies(), yang memudahkan proses One Hot Encoding. Fungsi ini menghasilkan kolom-kolom baru yang mewakili setiap nilai unik dari fitur kategorikal. Misalnya, jika fitur device_type memiliki nilai unik seperti "Mobile", "Desktop", dan "Tablet," setelah One Hot Encoding, akan terbentuk kolom baru, yaitu device_type_Mobile, device_type_Desktop, dan device_type_Tablet. Jika suatu baris menunjukkan nilai "Mobile" pada fitur device_type, maka kolom device_type_Mobile akan bernilai 1, sementara kolom lainnya akan bernilai 0.
+
+#### Pembagian Dataset menjadi Data Training dan Data Testing
+Pembagian dataset menjadi data training dan data testing sangat penting dalam pengembangan model prediksi iklan. Pembagian ini dilakukan untuk mengukur seberapa baik model dapat melakukan prediksi pada data yang belum pernah dilihat sebelumnya, serta menghindari masalah overfitting.
+
+- Data training (80% dari data) digunakan untuk melatih model sehingga model dapat mempelajari pola dari fitur yang diberikan.
+- Data testing (20% dari data) digunakan untuk mengevaluasi performa model setelah pelatihan, untuk mengukur seberapa baik model dapat memprediksi klik pada iklan di data baru.
+
+Rasio 80:20 adalah aturan praktis yang umum dalam machine learning, memberikan keseimbangan yang baik antara data yang cukup untuk melatih model dan data yang cukup untuk menguji akurasi model. Rasio ini juga dapat disesuaikan tergantung pada ukuran dataset dan kebutuhan spesifik proyek.
 ## 5. Modeling
-### Algoritma yang Digunakan
-KNN (K-Nearest Neighbors): Model ini menggunakan parameter k yang disetel melalui cross-validation.
-Random Forest: Parameter n_estimators dan max_depth disetel melalui grid search.
-XGBoost: Kami menggunakan learning_rate, n_estimators, dan max_depth sebagai parameter utama untuk proses tuning.
-Kelebihan dan Kekurangan
-KNN: Sederhana namun kurang optimal untuk dataset besar.
-Random Forest: Kuat terhadap overfitting tetapi membutuhkan lebih banyak sumber daya.
-XGBoost: Sangat akurat dan efisien dalam meminimalkan kesalahan, namun membutuhkan waktu yang lebih lama untuk pelatihan.
-### Model Terbaik
-Hasil menunjukkan bahwa Random forest memberikan hasil terbaik dengan akurasi 96%, diikuti oleh XGBoost dengan akurasi 92%. Random Forest dipilih sebagai model akhir karena akurasinya yang lebih tinggi.
+Dalam proyek prediksi klik iklan, model yang digunakan adalah K-Nearest Neighbors (KNN), Random Forest, dan XGBoost. Berikut adalah penjelasan konsep dan langkah-langkah yang diterapkan pada setiap algoritma dalam proses modeling[2]:
 
-## 6. Evaluation
-### Metrik Evaluasi
-Akurasi: Persentase prediksi benar dari seluruh prediksi.
-Precision dan Recall: Digunakan untuk mengukur relevansi prediksi, terutama untuk kelas positif (klik).
-F1-Score: Menggabungkan precision dan recall dalam satu metrik.
-### Hasil Proyek
-Model Random forest mencapai akurasi sebesar 96% dan F1-Score sebesar 0,96, menunjukkan bahwa model ini cukup efektif dalam memprediksi klik iklan.
+#### 1- K-Nearest Neighbors (KNN):
+- Tipe: KNN adalah algoritma pembelajaran berbasis instans atau lazy learning.
+- Algoritma: KNN membuat prediksi berdasarkan kelas mayoritas dari k-nearest neighbor-nya di ruang fitur.
+- Supervised/Unsupervised: Ini adalah algoritma pembelajaran terbimbing yang digunakan untuk tugas klasifikasi dan regresi.
+##### Kelebihan:
+-Mudah dipahami dan diterapkan.
+-Tidak ada periode pelatihan; prediksi dibuat saat runtime.
+-Berfungsi dengan baik untuk kumpulan data berukuran kecil hingga sedang.
+##### Kekurangan:
+-Bisa memakan banyak komputasi untuk kumpulan data besar.
+-Sensitif terhadap pilihan k dan metrik jarak.
+-Tidak berfungsi dengan baik dengan data berdimensi tinggi.
+#### 2- Random Forest:
+- Tipe: Random Forest adalah metode pembelajaran ensemble. Algoritma: Terdiri dari beberapa pohon keputusan, di mana setiap pohon dibangun secara independen pada subset data yang di-bootstrap dan menggunakan subset fitur acak untuk setiap pemisahan.
+-Diawasi/Tidak Diawasi: Terutama digunakan untuk tugas klasifikasi dan regresi yang diawasi.
+##### Kelebihan:
+-Memberikan akurasi dan generalisasi yang lebih baik dibandingkan dengan pohon keputusan individual.
+-Menangani data berdimensi tinggi dengan baik.
+-Mengurangi overfitting.
+##### Kekurangan:
+-Bisa lebih lambat untuk dilatih dibandingkan dengan pohon keputusan tunggal.
+-Kurang dapat diinterpretasikan daripada pohon keputusan tunggal.
+#### 3- XGBoost (Peningkatan Gradien Ekstrim):
+- Jenis: XGBoost adalah metode pembelajaran ensemble berdasarkan peningkatan gradien.
+- Algoritma: Membangun ensemble pohon keputusan secara berurutan, dengan setiap pohon mencoba untuk memperbaiki kesalahan dari pohon sebelumnya.
+- Diawasi/Tidak Diawasi: XGBoost terutama digunakan untuk tugas klasifikasi dan regresi yang diawasi.
+##### Kelebihan:
+-Kinerja prediktif yang sangat baik; sering digunakan dalam kompetisi pembelajaran mesin.
+- Penanganan kumpulan data besar secara efisien.
+- Teknik regularisasi untuk mencegah overfitting.
 
-## 7. Source
-1. Understanding Ads Click-Through Rate Prediction with Machine Learning from Medium [LINK](https://medium.com/@varun.tyagi83/understanding-ads-click-through-rate-prediction-with-machine-learning-9ee1e637203c)
-2. Research Gate : Difference of KNN, Random Forest, XGB [LINK](https://www.researchgate.net/post/What_is_the_difference_between_the_three_Machine_Learning_models)
+##### Kekurangan:
+- Memerlukan penyetelan hiperparameter.
+- Dapat menghabiskan banyak biaya komputasi untuk kumpulan data yang sangat besar.
+- Kurang dapat diinterpretasikan dibandingkan dengan model linier
 
-## 8. Struktur Laporan
-Laporan ini mengikuti format yang disarankan, dengan penjelasan yang diuraikan sesuai template, menyertakan kode snippet jika diperlukan untuk memudahkan pemahaman pembaca.
+## 7. Evaluasi
+Metrik Evaluasi Model: Akurasi
+Akurasi adalah salah satu metrik evaluasi yang umum digunakan untuk mengukur seberapa baik model dalam mengklasifikasikan data, khususnya dalam kasus klasifikasi biner seperti prediksi klik iklan (ya atau tidak). Akurasi dihitung sebagai persentase prediksi yang benar dari total prediksi yang dilakukan oleh model.
+
+Langkah-langkah untuk Menghitung Akurasi:
+
+Persiapkan Data: Pisahkan dataset menjadi data latih (training) dan data uji (testing).
+Melatih Model: Gunakan data latih untuk melatih model menggunakan algoritma yang dipilih (KNN, Random Forest, XGBoost).
+Prediksi pada Data Uji: Gunakan model yang dilatih untuk memprediksi nilai pada data uji.
+Hitung Akurasi: Bandingkan prediksi dengan nilai aktual pada data uji, lalu hitung persentase prediksi yang benar.
+Hasil Evaluasi Model
+Setelah melatih dan menguji model dengan data latih dan uji, berikut adalah hasil evaluasi akurasi masing-masing model:
+
+Model	Akurasi Train Set	Akurasi Test Set
+KNN	85%	83%
+Random Forest	96%	96%
+XGBoost	94%	94%
+Penjelasan Hasil Evaluasi:
+Akurasi KNN:
+
+Model KNN menunjukkan akurasi 83% pada data uji, yang berarti model ini dapat memprediksi klik iklan dengan cukup baik meskipun ada ruang untuk perbaikan lebih lanjut.
+KNN lebih sensitif terhadap data yang tidak terstandarisasi, sehingga normalisasi data dapat membantu meningkatkan kinerjanya.
+
+Akurasi Random Forest:
+Random Forest memberikan akurasi tertinggi, yaitu 96% pada data uji. Ini menunjukkan bahwa model ini sangat baik dalam memprediksi klik iklan dan mengklasifikasikan data dengan sangat akurat.
+Random Forest bekerja dengan baik karena mampu menangani fitur yang kompleks dan tidak linear.
+
+Akurasi XGBoost:
+XGBoost juga memberikan hasil yang sangat baik dengan akurasi 94% pada data uji. Model ini dikenal dengan kemampuannya untuk menangani data yang besar dan beragam serta memberikan prediksi yang lebih akurat dibandingkan banyak algoritma lainnya.
+Berikut perbandingan ketiga model
+![Perbandingan Model](https://github.com/user-attachments/assets/35bb2827-c697-48da-b296-940e8eeadc6f)
+
+## 8. Source
+V. Tyagi, "Understanding Ads Click-Through Rate Prediction with Machine Learning," Medium, [Online]. Available: https://medium.com/@varun.tyagi83/understanding-ads-click-through-rate-prediction-with-machine-learning-9ee1e637203c. [Accessed: Nov. 14, 2024].
+
+ ResearchGate, "Difference of KNN, Random Forest, XGB,", [Online]. Available: https://www.researchgate.net/post/What_is_the_difference_between_the_three_Machine_Learning_models. [Accessed: Nov. 14, 2024]
+
 
