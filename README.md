@@ -132,14 +132,17 @@ Prediksi iklan berdasarkan device type dan posisi iklan. Masing-masing device ty
 ## 7. Data Preparation
 Dalam proses persiapan data untuk proyek prediksi klik iklan, berikut adalah teknik yang digunakan:
 
-### Handling Missing value
-Terdapat beberapa missing value dalam data, dalam project ini saya mengatasinya dengan cara mengisi kolom null dengan ‘Unknown’ untuk menghindari imbalance data. Pengisian kolom null dengan mean, median, mode tidak dilakukan untuk mencegah analisis berlebihan terhadap data asli sekaligus mempertahankan informasi yang dibawa oleh nilai yang hilang.Selain itu, pendekatan ini membantu mengurangi bias model dan mengurangi risiko overfitting.
+### Penghapusan kolom 'id'
+Kolom id dihapus karena tidak dibutuhkan dalam proses analisis.
 
 ### Handling duplicate data
 Duplikasi data yang terjadi disebabkan oleh pengguna berulang, sehingga tidak dihapus agar dapat membuat kolom baru dengan mengidentifikasi melalui kolom tersebut.
 
 ### Feature Engineering 
 Pada project ini, dibuat kolom baru untuk mengidentifikasi aktivitas klik iklan pengguna baru dan pengguna lama. Kolom dinamai sebagai user_type. Selain itu dibuat juga age_group untuk mengkategorikan rentang usia pengguna.
+
+### Handling Missing value
+Terdapat beberapa missing value dalam data, dalam project ini saya mengatasinya dengan cara mengisi kolom null dengan ‘Unknown’ untuk menghindari imbalance data. Pengisian kolom null dengan mean, median, mode tidak dilakukan untuk mencegah analisis berlebihan terhadap data asli sekaligus mempertahankan informasi yang dibawa oleh nilai yang hilang.Selain itu, pendekatan ini membantu mengurangi bias model dan mengurangi risiko overfitting.
 
 ### One Hot Encoding pada Fitur Kategorikal
 Pada dataset prediksi iklan, terdapat beberapa fitur kategorikal, seperti gender, device_type, ad_position, dan time_of_day, yang tidak dapat langsung digunakan dalam algoritma machine learning karena sebagian besar algoritma hanya bekerja dengan data numerik. Oleh karena itu, teknik One Hot Encoding digunakan untuk mengonversi variabel kategorikal ini ke dalam representasi numerik.
@@ -154,12 +157,14 @@ Rasio 80:20 adalah aturan praktis yang umum dalam machine learning, memberikan k
 ## 8. Model Development
 Dalam proyek prediksi klik iklan, model yang digunakan adalah K-Nearest Neighbors (KNN), Random Forest, dan XGBoost. Berikut adalah penjelasan konsep dan langkah-langkah yang diterapkan pada setiap algoritma dalam proses modeling (Martin et al., 2022):
 ### 1. K-Nearest Neighbors (KNN):
-####Cara Kerja: KNN mengukur jarak antara titik data baru dan titik data training untuk menemukan "K" tetangga terdekat, lalu menentukan nilai kelas berdasarkan mayoritas kelas tetangga tersebut.
+#### Cara Kerja: 
+KNN mengukur jarak antara titik data baru dan titik data training untuk menemukan "K" tetangga terdekat, lalu menentukan nilai kelas berdasarkan mayoritas kelas tetangga tersebut.
 #### Kelebihan:
 Mudah dipahami dan diterapkan, Tidak ada periode pelatihan; prediksi dibuat saat runtime, Berfungsi dengan baik untuk kumpulan data berukuran kecil hingga sedang.
 #### Kekurangan:
 Bisa memakan banyak komputasi untuk kumpulan data besar, Sensitif terhadap pilihan k dan metrik jarak, Tidak berfungsi dengan baik dengan data berdimensi tinggi.
-#### Parameter model : KNeighborsClassifier(n_neighbors=10). Parameter ini menentukan jumlah tetangga terdekat yang digunakan dalam prediksi.
+#### Parameter model : 
+- KNeighborsClassifier(n_neighbors=10). Parameter ini menentukan jumlah tetangga terdekat yang digunakan dalam prediksi.
 
 ### 2. Random Forest:
 #### Cara Kerja: 
@@ -170,10 +175,10 @@ Model ini melatih banyak pohon keputusan pada subset acak dari data, lalu mengga
 -Bisa lebih lambat untuk dilatih dibandingkan dengan pohon keputusan tunggal, Kurang dapat diinterpretasikan daripada pohon keputusan tunggal.
 #### Parameter model : 
 n_estimators=50, max_depth=16, random_state=50, n_jobs=-1
-n_estimators=50: Jumlah random forest, di sini ada 50.
-max_depth=16: Kedalaman maksimum tiap pohon dibatasi hingga 16 tingkat.
-random_state=50: Menetapkan seed agar hasil model konsisten pada setiap run.
-n_jobs=-1: Menggunakan semua CPU yang tersedia untuk mempercepat pemrosesan.
+- n_estimators=50: Jumlah random forest, di sini ada 50.
+- max_depth=16: Kedalaman maksimum tiap pohon dibatasi hingga 16 tingkat.
+- random_state=50: Menetapkan seed agar hasil model konsisten pada setiap run.
+- n_jobs=-1: Menggunakan semua CPU yang tersedia untuk mempercepat pemrosesan.
 
 ### 3. XGBoost (Peningkatan Gradien Ekstrim):
 #### Cara kerja : 
@@ -194,7 +199,12 @@ n_estimators=50, max_depth=16, random_state=55, n_jobs=-1. Untuk deskripsi hampi
 Metrik Evaluasi Model: Akurasi Akurasi adalah salah satu metrik evaluasi yang umum digunakan untuk mengukur seberapa baik model dalam mengklasifikasikan data, khususnya dalam kasus klasifikasi biner seperti prediksi klik iklan (ya atau tidak). Akurasi dihitung sebagai persentase prediksi yang benar dari total prediksi yang dilakukan oleh model.
 
 ### Langkah-langkah untuk Menghitung Akurasi:
-Persiapkan Data: Pisahkan dataset menjadi data latih (training) dan data uji (testing). Melatih Model: Gunakan data latih untuk melatih model menggunakan algoritma yang dipilih (KNN, Random Forest, XGBoost). Prediksi pada Data Uji: Gunakan model yang dilatih untuk memprediksi nilai pada data uji. Hitung Akurasi: Bandingkan prediksi dengan nilai aktual pada data uji, lalu hitung persentase prediksi yang benar. Hasil Evaluasi Model Setelah melatih dan menguji model dengan data latih dan uji, berikut adalah hasil evaluasi akurasi masing-masing model:
+1. Persiapkan Data: Pisahkan dataset menjadi data latih (training) dan data uji (testing).
+2. Melatih Model: Gunakan data latih untuk melatih model menggunakan algoritma yang dipilih (KNN, Random Forest, XGBoost).
+3. Prediksi pada Data Uji: Gunakan model yang dilatih untuk memprediksi nilai pada data uji.
+4. Hitung Akurasi: Bandingkan prediksi dengan nilai aktual pada data uji, lalu hitung persentase prediksi yang benar.
+5. Hasil Evaluasi Model Setelah melatih dan menguji model dengan data latih dan uji, berikut adalah hasil evaluasi akurasi masing-masing model:
+
 ##### Model scores akurasi : 
 {'KNN': 0.8866906474820144,
  'Random Forest': 0.9592326139088729,
